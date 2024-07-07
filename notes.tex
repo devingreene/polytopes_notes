@@ -1,0 +1,125 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage[affil-sl]{authblk}
+
+%\numberwithin{equation}{section}
+
+\theoremstyle{plain} \newtheorem{thm}{Theorem}%[section]
+\theoremstyle{plain} \newtheorem{define}{Definition}%[section]
+\theoremstyle{plain} \newtheorem{example}{Example}%[section]
+\theoremstyle{plain} \newtheorem{remark}{Remark}%[section]
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\realn}{\mathbb{R}^n}
+\newcommand{\mixed}{mixed-sign}
+
+\begin{document}
+\begin{define}
+    A subspace $V$ of $\realn$ is called \mixed{} if every non-zero
+    vector in $V$ has both negative and positive components.
+\end{define}
+
+\begin{thm}
+    Let $V \subset \realn$ be a \mixed{} subspace.  Then there exists a
+    vector $\bf t$ in $\realn$ with all positive components such that
+    $\bf t$ is orthogonal to $V$.
+\end{thm}
+
+\begin{proof}
+    Proof by induction on $n$.  $\reals^1$ has no \mixed{} subspace.
+    Any \mixed{} subspace of $\reals^2$ has the form $\reals
+    \langle a, -b\rangle$ where $a,b > 0$.  So ${\bf t} = \langle b,
+    a\rangle$ satisfies the condition.
+
+    Express a basis of $V$ as a matrix of row vectors:
+
+    \begin{equation*}
+    \begin{pmatrix}
+    v_{11}&v_{12}&\cdots&v_{1n}\cr
+    \vdots&\vdots&\ddots&\vdots\cr
+    v_{m1}&v_{m2}&\cdots&v_{mn}\cr
+    \end{pmatrix}
+    \end{equation*}
+
+    If the first column is all zeros, then by induction there exists
+    ${\bf t}_0 \in \reals{}^{n-1}$ orthogonal to all the row vectors of
+    the submatrix consisting of the right $n-1$ colunns.  Extend
+    ${\bf t}_0$ to a satisfying vector $\bf t$ by prepending an arbitrary
+    positive number.
+
+    If the first column is not zero, use elimination to derive a matrix
+    of the form
+
+    \begin{equation*}
+    \begin{pmatrix}
+    1&v_{12}&\cdots&v_{1n}\cr
+    0&v_{22}&\cdots&v_{2n}\cr
+    \vdots&\vdots&\ddots&\vdots\cr
+    0&v_{m2}&\cdots&v_{mn}\cr
+    \end{pmatrix}
+    \end{equation*}
+
+    Using standard orthogonalization moves, we can assume that top row
+    is orthogonal to the remaining rows.
+
+    Two cases:
+
+    \noindent Case 1:  The subspace of $\reals^{n-1}$ spanned by the
+    matrix consisting of the right $n-1$ columns is a \mixed{} subspace.
+
+    \medskip
+
+    By induction, there exists a vector ${\bf t_p} = \langle 0,t'_1,\cdots
+    t'_n\rangle$, with\break$t'_1, t'_2, \ldots, t'_n > 0$ which is orthogonal to the rows of the matrix.
+
+    Perturb ${\bf t_p}$ slightly by \epsilon$\langle0, v_{12}, \ldots
+    v_{1n}\rangle$ with $\epsilon > 0$ so that the resulting vector
+
+    $${\bf \tilde{t}} = \langle 0, t_2, \ldots, t_n\rangle =
+    {\bf t_0} - \epsilon \langle 0,v_{12},\ldots,v_{1n}\rangle$$
+    still has components $t_2,\ldots, t_n > 0$.
+
+    Clearly ${\bf \tilde{t}}$ remains orthogonal to the lower $m-1$
+    rows.  Its inner product with the top row is
+
+    $$-\epsilon \|\langle v_{12},\ldots,v_{1n}\rangle\|^2$$
+
+    This is a negative number since the row space is \mixed{}.  The
+    vector
+    $${\bf t} = \langle \epsilon \|\langle v_{12}, \ldots
+    v_{1n}\rangle\|^2, t_2, \ldots, t_n\rangle$$
+    satisfies the desired condition.
+    
+    \medskip
+
+    \noindent Case 2:  The subspace referred to in Case 1 is not a
+    \mixed{} subspace.
+
+    In this case, it must be possible to find a nonzero linear combination of
+    the rows of the matrix whose last $n-1$ components are $\le 0$.
+    Since the lower $m-1$ rows are in $V$, they span a \mixed{}
+    subspace.  Thus such a linear combination must involve the top row.
+    So one can replace the top row with a vector which is $1$ at the
+    first component and $\le 0$ at all the others which are not all
+    zero.
+
+    By induction, there exists a vector ${\bf t_p} =
+    \langle0,t_2,\ldots,t_n\rangle$ such that\break$t_2,\ldots,t_n > 0$ and
+    which is orthogonal to the last $m-1$ rows.  The inner product of
+    ${\bf t_p}$ with the first row must be a negative number
+    $\alpha$.  Take ${\bf t} = \langle -\alpha,t_2,\ldots,t_n\rangle$
+    This vector is orthogonal to all the rows of the matrix, and thus to
+    $V$.
+
+
+    
+\end{proof}
+\end{document}
+% vim: tw=72
