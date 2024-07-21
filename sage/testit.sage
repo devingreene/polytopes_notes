@@ -1,11 +1,10 @@
 load('triangulate.sage')
 
-P = [[0, 0, 0, 1, 1, 1, 0, 0, 0],
-     [0, 0, 0, 0, 0, 0, 1, 1, 1],
-     [0, 1, 0, 0, 1, 0, 0, 1, 0],
-     [0, 0, 1, 0, 0, 1, 0, 0, 1]]
-    
-P = matrix(P)
+plytp = sys.argv[2] if sys.argv[2:] else "cube"
+
+load(plytp + ".sage")
+
+P = matrix(P).T
 
 N = 100 if not sys.argv[1:] else int(sys.argv[1])
 import math
