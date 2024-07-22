@@ -19,7 +19,9 @@ def make_W_matrix(P,f):
     P = matrix(P.nrows(),1,[0]*P.nrows()).change_ring(QQ).augment(P)
     P = matrix([-1] + f).stack(P)
     W = P.right_kernel_matrix()
-    assert W[:,0] == matrix([1] + [0]*(W.nrows() - 1)).T
+    if W[:,0] != matrix([1] + [0]*(W.nrows() - 1)).T:
+        raise Degeneracy(f"Degeneracy detected: kernel of\n"
+                         f"{P}\nwith\n{f}\nis\n{W}")
     return W
 
 def iterator_n_k(n,k):
