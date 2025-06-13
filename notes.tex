@@ -69,15 +69,18 @@
     Using standard orthogonalization moves, we can assume that top row
     is orthogonal to the remaining rows.
 
-    Two cases:
+    \medskip
+    \noindent Two cases:
 
-    \noindent Case 1:  The subspace of $\reals^{n-1}$ spanned by the
+    \noindent Case 1:
+
+    The subspace of $\reals^{n-1}$ spanned by the rows of the
     matrix consisting of the right $n-1$ columns is a \mixed{} subspace.
 
     \medskip
 
-    By induction, there exists a vector ${\bf t_p} = \langle 0,t'_1,\cdots
-    t'_n\rangle$, with\break$t'_1, t'_2, \ldots, t'_n > 0$ which is orthogonal to the rows of the matrix.
+    By induction, there exists a vector ${\bf t_p} = \langle 0,t'_2,\cdots
+    t'_n\rangle$, with\break$t'_2, t'_3, \ldots, t'_n > 0$ which is orthogonal to the rows of the matrix.
 
     Perturb ${\bf t_p}$ slightly by \epsilon$\langle0, v_{12}, \ldots
     v_{1n}\rangle$ with $\epsilon > 0$ so that the resulting vector
@@ -86,12 +89,13 @@
     {\bf t_0} - \epsilon \langle 0,v_{12},\ldots,v_{1n}\rangle$$
     still has components $t_2,\ldots, t_n > 0$.
 
-    Clearly ${\bf \tilde{t}}$ remains orthogonal to the lower $m-1$
+    Clearly ${\bf \tilde{t}}$ is orthogonal to the lower $m-1$
     rows.  Its inner product with the top row is
 
     $$-\epsilon \|\langle v_{12},\ldots,v_{1n}\rangle\|^2$$
 
-    This is a negative number since the row space is \mixed{}.  The
+    This is a negative number since $\langle v_{12},v_{13},\ldots,v_{1n}\rangle$
+    has \mixed{}.  The
     vector
     $${\bf t} = \langle \epsilon \|\langle v_{12}, \ldots
     v_{1n}\rangle\|^2, t_2, \ldots, t_n\rangle$$
@@ -99,16 +103,20 @@
     
     \medskip
 
-    \noindent Case 2:  The subspace referred to in Case 1 is not a
+    \noindent Case 2:
+
+    The subspace referred to in Case 1 is not a
     \mixed{} subspace.
 
-    In this case, it must be possible to find a nonzero linear combination of
-    the rows of the matrix whose last $n-1$ components are $\le 0$.
-    Since the lower $m-1$ rows are in $V$, they span a \mixed{}
-    subspace.  Thus such a linear combination must involve the top row.
-    So one can replace the top row with a vector which is $1$ at the
-    first component and $\le 0$ at all the others which are not all
-    zero.
+    In this case, it must be possible to find a nonzero linear
+    combination $\textbf{x}$ of the rows of the matrix where the last
+    $n-1$ components of $\textbf{x}$ are $\le 0$ and are not all
+    nonzero. Since the lower $m-1$ rows are in $V$, they span a \mixed{}
+    subspace.  Thus the coefficient of the top row in the expression for
+    $\textbf{x}$ must be nonzero. We can then swap the top row of the
+    matrix with $\textbf{x}$ without changing the row space. Since
+    $\textbf{x}$ is in the \mixed{} row-space under consideration, the
+    first component must be $>0$, so we assume that it is $1$.
 
     By induction, there exists a vector ${\bf t_p} =
     \langle0,t_2,\ldots,t_n\rangle$ such that\break$t_2,\ldots,t_n > 0$ and
